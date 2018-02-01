@@ -1,4 +1,3 @@
-# BioInformaticsProject
 # Capturing and mapping NOAA data
 ### ProjectDaniTessel2018
 *Written by Danielle Crowley & Tessel Lagerwerf*
