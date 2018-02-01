@@ -13,11 +13,13 @@ import subprocess as sp
 # Imports the library called subprocesses as sp
 
 filename = "deep_sea_corals.csv"
+# This is a variable called filename where you can put in the name of the file you want to download from the noaa site
 os_command = "".join(["curl -k  \"https://ecowatch.ncddc.noaa.gov/erddap/tabledap/",filename,"?VernacularNameCategory%2CScientificName%2CObservationYear%2Clatitude%2Clongitude%2CDepthInMeters%2CDepthMethod&ObservationYear%3E=2005\" -o deep_sea_curl.csv"])
+# This is a variable that joins the filename within the noaa site url to get it to download
 
 os.system(os_command)
-# The os.system grands the possibility to use the shell command 'curl'
-# The curl command grands the possibility to directly download the filename file from the website mentioned
+# The os.system grands the possibility to use the shell command 'curl', which is within the variable os_command
+# Therefore this command will download the file with the filename you want from the NOAA site
 
 Data =  "deep_sea_curl.csv"
 # Creates the variable called Data based on the earlier downloaded data file: deep_sea_curl.csv
@@ -41,9 +43,9 @@ Dataframe.to_csv('ggmap.csv',index=False,header=True)
 # Makes the dataframe into a csv file, so this can be used in R
 MarMap.close()
 
-Rscript = "/home/tessel/Rscript/MapsinR.R"
+Rscript = "R/MapsinR.R"
 # Creates a variable with the directory to the Rscript needed
-sp.call (["/usr/bin/Rscript", "--vanilla", Rscript])
+sp.call (["R", "--vanilla", Rscript])
 # Runs the Rscript 
 
 def regex1(Data):
@@ -132,24 +134,25 @@ for Line in InFile:
 		if WriteOutFile:
 		# This checks if WriteOutFile is True and when it is the following is going to happen:
 			OutFile.write(PlacemarkString)
+			# The PlacemarkString variable is added to the OutFile
 		else:
 			print PlacemarkString
+			# If the WriteOutFile is false, it prints the PlacemarkString in the terminal
 
 	LineNumber += 1 
+# After every loop it adds 1 to the variable LineNumber
+	
+InFile.close()
 
-InFile.close() 
-if WriteOutFile: 
-	print "Saved", LineNumber,"records from",Data, "as", OutFileName 
-	OutFile.write('\n</Document>\n</kml>\n') 
+if WriteOutFile:
+# This checks if WriteOutFile is True and when it is the following is going to happen:
+	print "Saved", LineNumber,"records from",Data, "as", OutFileName
+	# Prints the text Saved 'Linenumber' records from 'Name of the infile' as 'the name of the outfile'
+	OutFile.write('\n</Document>\n</kml>\n')
+	# Closing the document and kml codes
 	OutFile.close() 
+	# Closing the file
 else:
 	print '\n</Document>\n</kml>\n' 
-
-
-
-
-
-
-
-
+	# If the WriteOutFile is false, it prints the closing markers in the terminal
 
