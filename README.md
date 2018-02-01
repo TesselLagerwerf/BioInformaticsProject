@@ -14,9 +14,17 @@ To run the command you have to type the following command in your terminal:
 ```
 python /home/tessel/BioInformaticsProject/ProjectDaniTessel.py $PWD
 ``` 
+If you do not want the output of the KML, you can change 
+```
+WriteOutFile = True
+```
+to 
+```
+WriteOutFile = False
+```
+Then the input will be on your terminal.
+
 
 ## Scripts
 
-1: *LINK HERE*  : Processes the data file and creates the kml file, which can be veiwed with Google Earth
-
-2: *LINK HERE*  : Uses the specified data within the R script to create the annual ggplot maps
+1: [link to script] (BioInformaticsProject/ProjectDaniTessel.py): Downloads the data file to create a file fitted for the R script. The R-script creates maps. The script continues to create a KML file, that can be uploaded to google earth
