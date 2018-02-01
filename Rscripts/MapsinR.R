@@ -2,7 +2,7 @@ library("ggplot2")
 library("rworldmap")
 # Loading all the necessary packages
 
-data <-read.csv(file="Data/ggmap.csv", header=T, sep=',')
+data <-read.csv(file="ggmap.csv", header=T, sep=',')
 # Loading the data into R
 
 data = data[-c(1),]

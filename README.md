@@ -9,6 +9,12 @@ Data files, such as those from sources like NOAA, contain large amounts of colum
 
 Within the main directory you will find a detailed report on any lines that should be edited before running these scripts on your own data. For these to work you should have access to both R with the required installs (see report) and Google Earth. These scripts were designed for python version 2.7.
 
+# Usage
+To run the command you have to type the following command in your terminal:
+```
+python /home/tessel/BioInformaticsProject/ProjectDaniTessel.py $PWD
+``` 
+
 ## Scripts
 
 1: *LINK HERE*  : Processes the data file and creates the kml file, which can be veiwed with Google Earth

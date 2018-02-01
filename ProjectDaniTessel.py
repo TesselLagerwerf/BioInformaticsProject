@@ -11,22 +11,24 @@ import pandas as pd
 # This means that when we want to use pandas, we can just say pd
 import subprocess as sp
 # Imports the library called subprocesses as sp
+import sys
+# Imports the library called sys, that can be used for defining directories
 
 filename = "deep_sea_corals.csv"
 # This is a variable called filename where you can put in the name of the file you want to download from the noaa site
-os_command = "".join(["curl -k  \"https://ecowatch.ncddc.noaa.gov/erddap/tabledap/",filename,"?VernacularNameCategory%2CScientificName%2CObservationYear%2Clatitude%2Clongitude%2CDepthInMeters%2CDepthMethod&ObservationYear%3E=2005\" -o Data/deep_sea_curl.csv"])
+os_command = "".join(["curl -k  \"https://ecowatch.ncddc.noaa.gov/erddap/tabledap/",filename,"?VernacularNameCategory%2CScientificName%2CObservationYear%2Clatitude%2Clongitude%2CDepthInMeters%2CDepthMethod&ObservationYear%3E=2005\" -o deep_sea_curl.csv"])
 # This is a variable that joins the filename within the noaa site url to get it to download
 
 os.system(os_command)
 # The os.system grands the possibility to use the shell command 'curl', which is within the variable os_command
 # Therefore this command will download the file with the filename you want from the NOAA site
 
-Data =  "Data/deep_sea_curl.csv"
+Data = "/".join([sys.argv[1],"deep_sea_curl.csv"])
 # Creates the variable called Data based on the earlier downloaded data file: deep_sea_curl.csv
+# This is found in the earlier defined sys.argv[1], where [1] is the line that you put in the terminal
 
 MarMap = open('ggmap.csv','w')
 # Creates the variable called MarMap with the possibility to write in a new file called Data 
-
 SpeciesInfo = pd.read_csv(Data)
 # Creating the possibility to use the panda package in the Data, when the variable SpeciesInfo is called
 latitude = SpeciesInfo['latitude']
@@ -43,9 +45,11 @@ Dataframe.to_csv('ggmap.csv',index=False,header=True)
 # Makes the dataframe into a csv file, so this can be used in R
 MarMap.close()
 
-Rscript = "Rscripts/MapsinR.R"
+Rscript = "/".join([sys.argv[1],"Rscripts/MapsinR.R"])
 # Creates a variable with the directory to the Rscript needed
-sp.call (["Rscripts", "--vanilla", Rscript])
+# This is found in the earlier defined sys.argv[1], where [1] is the line that you put in the terminal
+
+sp.call (['Rscript', "--vanilla", Rscript])
 # Runs the Rscript 
 
 def regex1(Data):
