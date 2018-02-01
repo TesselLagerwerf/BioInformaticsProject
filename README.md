@@ -27,4 +27,4 @@ Then the input will be on your terminal.
 
 ## Scripts
 
-1: [link to script](https://github.com/TesselLagerwerf/BioInformaticsProject/blob/master/ProjectDaniTessel.py) : Downloads the data file to create a file fitted for the R script. The R-script creates maps. The script continues to create a KML file, that can be uploaded to google earth
+1: [link to script](https://github.com/TesselLagerwerf/BioInformaticsProject/blob/master/ProjectDaniTessel.py) : Downloads the data file to create a file fitted for the R-script. The R-script creates maps. The script continues to create a KML file, that can be uploaded to google earth. In order for the attached R-script within the Rscripts directory to work, this script has to run
