@@ -14,14 +14,14 @@ import subprocess as sp
 
 filename = "deep_sea_corals.csv"
 # This is a variable called filename where you can put in the name of the file you want to download from the noaa site
-os_command = "".join(["curl -k  \"https://ecowatch.ncddc.noaa.gov/erddap/tabledap/",filename,"?VernacularNameCategory%2CScientificName%2CObservationYear%2Clatitude%2Clongitude%2CDepthInMeters%2CDepthMethod&ObservationYear%3E=2005\" -o Data/deep_sea_curl.csv"])
+os_command = "".join(["curl -k  \"https://ecowatch.ncddc.noaa.gov/erddap/tabledap/",filename,"?VernacularNameCategory%2CScientificName%2CObservationYear%2Clatitude%2Clongitude%2CDepthInMeters%2CDepthMethod&ObservationYear%3E=2005\" -o deep_sea_curl.csv"])
 # This is a variable that joins the filename within the noaa site url to get it to download
 
 os.system(os_command)
 # The os.system grands the possibility to use the shell command 'curl', which is within the variable os_command
 # Therefore this command will download the file with the filename you want from the NOAA site
 
-Data =  "Data/deep_sea_curl.csv"
+Data =  "deep_sea_curl.csv"
 # Creates the variable called Data based on the earlier downloaded data file: deep_sea_curl.csv
 
 MarMap = open('ggmap.csv','w')
