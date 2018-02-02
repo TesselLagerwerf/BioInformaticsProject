@@ -1,9 +1,6 @@
 #! /usr/bin/env python
 
-# This is a python script to generate a map based on NOAA data. You can decide which datafile you can download from the NOAA site, by changing the variable filename.
-# If you want to change to a different file of NOAA, you have to make sure the filename is how it is saved on the NOAA website. The link can be found in the README file.
-# When you enter one input file, the script generates multiple output files: it creates world maps containing the data for each year and a KML file that can be uploaded to google earth.
-# To run the KML file, you have to make sure your operating system has enough power, because the KML generated is really large. 
+# This is a python script to generate a abundance map based on 
 
 import re
 # Installs the library for regular expressions
